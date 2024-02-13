@@ -1,0 +1,225 @@
+// Array de perguntas e respostas
+const quiz = [
+    {
+        pergunta: "A tag <head> é usada para definir o conteúdo principal de uma página.",
+        resposta: false
+    },
+    {
+        pergunta: "O seletor universal * seleciona todos os elementos em uma página.",
+        resposta: true
+
+    },
+
+    {
+        pergunta: "A função console.log() é usada para imprimir mensagens no console do navegador.",
+        resposta: true
+
+    },
+
+    {
+        pergunta: "A tag <main> é usada para representar o conteúdo principal de um documento HTML.",
+        resposta: false
+
+    },
+
+    {
+        pergunta: "A tag <article> é usada para representar um conteúdo independente que pode ser distribuído e reutilizado.",
+        resposta: true
+
+    },
+
+    {
+        pergunta: " A propriedade margin é usada para definir o espaçamento interno de um elemento. ",
+        resposta: false
+
+    },
+
+    {
+        pergunta: "A propriedade position: absolute; posiciona um elemento em relação ao seu contêiner pai.",
+        resposta: false
+
+    },
+
+    {
+        pergunta: "O método array.pop() remove o último elemento de um array.",
+        resposta: true
+
+    },
+
+    {
+        pergunta: "A tag <figure> é usada para incorporar conteúdo multimídia, como imagens, vídeos ou gráficos.",
+        resposta: false
+
+    },
+
+    {
+        pergunta: "A propriedade border-radius é usada para criar bordas arredondadas em elementos.",
+        resposta: true
+
+    },
+
+    {
+        pergunta: "A propriedade text-align é usada apenas para alinhar o texto horizontalmente, não afetando o alinhamento vertical.",
+        resposta: false
+
+    },
+    // Adicione mais perguntas conforme necessário
+];
+
+let perguntaAtual = 0;
+
+function exibirPergunta() {
+    const perguntaElement = document.getElementById("pergunta");
+    const botoes = document.querySelector(".botoes");
+
+    if (perguntaAtual < quiz.length) {
+        perguntaElement.textContent = quiz[perguntaAtual].pergunta;
+
+        // Cria botões para verdadeiro e falso
+        botoes.innerHTML = "";
+        const botaotrue = document.createElement("div");
+        botaotrue.textContent = "Verdadeiro";
+        botaotrue.classList.add("botaotrue"); // Corrigido aqui
+        botaotrue.onclick = function () {
+            verificarResposta(true);
+        };
+        botoes.appendChild(botaotrue); // Corrigido aqui
+
+        const botaofalse = document.createElement("div");
+        botaofalse.textContent = "Falso";
+        botaofalse.classList.add("botaofalse"); // Corrigido aqui
+        botaofalse.onclick = function () {
+            verificarResposta(false);
+        };
+        botoes.appendChild(botaofalse); // Corrigido aqui
+    } else {
+        // Fim do quiz
+        perguntaElement.textContent = "Quiz Concluído!";
+        botoes.innerHTML = "";
+    }
+}
+
+// ... (seu código existente)
+
+function verificarResposta(resposta) {
+    if (resposta === quiz[perguntaAtual].resposta) {
+        // Resposta correta
+        alert("Resposta Correta!");
+    } else {
+        // Resposta incorreta
+        alert("Resposta Incorreta!");
+        window.location.href = "ohnao.html";
+        return; // Para evitar que o código continue após o redirecionamento
+    }
+
+    // Verifica se todas as perguntas foram respondidas
+    if (perguntaAtual === quiz.length - 1) {
+        // Todas as perguntas foram respondidas corretamente, redireciona para 'Parabens'
+        alert("Parabéns! Todas as perguntas foram respondidas corretamente. ");
+        window.location.href = "parabens.html";
+    } else {
+        // Passa para a próxima pergunta
+        perguntaAtual++;
+        exibirPergunta();
+    }
+}
+
+// Inicializa a exibição da primeira pergunta
+exibirPergunta();
+
+
+// ... (seu código existente)
+
+
+/*
+function verificarResposta(resposta) {
+    if (resposta === quiz[perguntaAtual].resposta) {
+        // Resposta correta
+        alert("Resposta Correta!");
+    } else {
+        // Resposta incorreta
+        alert("Resposta Incorreta!");
+    }
+
+    // Passa para a próxima pergunta
+    perguntaAtual++;
+    exibirPergunta();
+}
+
+// Inicializa a exibição da primeira pergunta
+exibirPergunta();
+
+
+*/
+
+
+
+
+
+// Array de perguntas e respostas
+
+/*
+
+const quiz = [
+    {
+        pergunta: "Estrutura básica do HTML inclui qual elemento?",
+        resposta: true
+    },
+    {
+        pergunta: "Qual propriedade CSS é usada para alterar a cor do texto?",
+        resposta: false
+    },
+    // Adicione mais perguntas conforme necessário
+];
+
+let perguntaAtual = 0;
+
+function exibirPergunta() {
+    const perguntaElement = document.getElementById("pergunta");
+    const botoes = document.querySelector(".botoes");
+
+    if (perguntaAtual < quiz.length) {
+        perguntaElement.textContent = quiz[perguntaAtual].pergunta;
+
+        // Cria botões para verdadeiro e falso
+        botoes.innerHTML = "";
+        const botaotrue = document.createElement("div");
+        botaoTrue.textContent = "Verdadeiro";
+        botaoTrue.classList.add("botaotrue");
+        botaoTrue.onclick = function () {
+            verificarResposta(true);
+        };
+        botoes.appendChild(botaoTrue);
+
+        const botaofalse = document.createElement("div");
+        botaoFalse.textContent = "Falso";
+        botaoFalse.classList.add("botaofalse");
+        botaoFalse.onclick = function () {
+            verificarResposta(false);
+        };
+        botoes.appendChild(botaoFalse);
+    } else {
+        // Fim do quiz
+        perguntaElement.textContent = "Quiz Concluído!";
+        botoes.innerHTML = "";
+    }
+}
+
+function verificarResposta(resposta) {
+    if (resposta === quiz[perguntaAtual].resposta) {
+        // Resposta correta
+        alert("Resposta Correta!");
+    } else {
+        // Resposta incorreta
+        alert("Resposta Incorreta!");
+    }
+
+    // Passa para a próxima pergunta
+    perguntaAtual++;
+    exibirPergunta();
+}
+
+
+// Inicializa a exibição da primeira pergunta
+exibirPergunta();
+*/
